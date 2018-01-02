@@ -9,6 +9,6 @@
      "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
     "targetOsType": "Windows",
     "runCommand": {
-        "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File apache-httpd.ps1"
+        "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File apache.ps1"
     }
 }
