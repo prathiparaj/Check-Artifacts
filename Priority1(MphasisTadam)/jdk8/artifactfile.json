@@ -1,8 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-    "title": "jdk8",
+    "title": "jdk 8",
 	"publisher": "G7CR Technologies India Pvt Ltd",
-    "description": "jdk8",
+    "description": "jdk 8",
     "tags": [
         "jdk8"
     ],
