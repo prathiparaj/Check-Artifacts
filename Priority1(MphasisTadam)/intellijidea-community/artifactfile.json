@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "intellijidea-community",
+	"publisher": "G7CR Technologies India Pvt.Ltd",
+    "description": "intellijidea-community",
+    "tags": [
+        "intellijidea-community"
+    ],
+"iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
+    "targetOsType": "Windows",
+    "runCommand": {
+        "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File intellijidea.ps1"
+    }
+}
