@@ -1,7 +1,7 @@
 # Silent SASS using RubyInstaller
 
-[System.Environment]::SetEnvironmentVariable("PATH", $Env:Path + ";C:\Ruby23-x64\bin\;C:\RubyDevKit;C:\Ansicon\x64", "Machine") 
-$env:Path += ";C:\Ruby23-x64\bin\"
+[System.Environment]::SetEnvironmentVariable("PATH", $Env:Path + ";C:\Ruby24-x64\bin\;C:\RubyDevKit;C:\Ansicon\x64", "Machine") 
+$env:Path += ";C:\Ruby24-x64\bin\"
 $env:Path += ";C:\Ansicon\x64" 
 
 function Create-Folder {
@@ -34,7 +34,7 @@ If (Test-Path -Path $workdir -PathType Container)
 ELSE
 { New-Item -Path $workdir  -ItemType directory }
 # Download the installer
-$source = "https://mylibrary123.blob.core.windows.net/reposit/rubyinstaller-2.4.2-2-x64.exe"
+$source = "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/rubyinstaller-2.4.2-2-x64.exe"
 $destination = "$workdir\rubyinstaller-2.4.2-2-x64.exe"
 # Check if Invoke-Webrequest exists otherwise execute WebClient
 if (Get-Command 'Invoke-Webrequest')
