@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+  "title": "Workbench 6.2.5",
+  "publisher": "G7CR Technologies India Pvt.Ltd",
+  "description": "Workbench 6.2.5",
+  "tags": [
+    "Windows",
+    "workbench"
+     ],
+	 "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
+  "targetOsType": "Windows",
+  "runCommand": {
+    "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File workbench.ps1"
+  }
+}

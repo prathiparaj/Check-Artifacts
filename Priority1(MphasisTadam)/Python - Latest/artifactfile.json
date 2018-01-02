@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+  "title": "Python(Latest)",
+  "publisher": "G7CR Technologies India Pvt.Ltd",
+  "description": "Installs Python(Latest)",
+  "tags": [
+    "Windows",
+    "python"
+     ],
+	 "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
+  "targetOsType": "Windows",
+  "runCommand": {
+    "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File python.ps1"
+  }
+}

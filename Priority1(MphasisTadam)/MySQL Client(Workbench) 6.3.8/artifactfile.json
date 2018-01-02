@@ -1,0 +1,13 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "MySQL Client 6.3.8",
+	"publisher": "G7CR Technologies India Pvt Ltd",
+    "description": "WorkBench 6.3.8 for MySQL Client",
+    "tags": [
+        "MySQL Client", "WorkBench"    ],
+    "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
+    "targetOsType": "Windows",
+    "runCommand": {
+        "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File mysql-client.ps1"
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+  "title": "robo3t 1.1.1",
+    "publisher": "G7CR Technologies India Pvt.Ltd",
+  "description": "Installs robo3t 1.1.1",
+  "tags": [
+    "Windows",
+    "robo3t"
+     ],
+	 "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
+  "targetOsType": "Windows",
+  "runCommand": {
+    "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File robo3t.ps1"
+  }
+}

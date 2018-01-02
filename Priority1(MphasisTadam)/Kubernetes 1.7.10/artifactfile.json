@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "Kubernetes 1.7.10",
+	"publisher": "G7CR Technologies India Pvt.Ltd",
+    "description": "Kubernetes 1.7.10",
+    "tags": [
+        "Kubernetes"
+    ],
+   "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
+    "targetOsType": "Windows",
+    "runCommand": {
+        "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File kubernetes.ps1"
+    }
+}
