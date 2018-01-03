@@ -10,6 +10,6 @@
    "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
     "targetOsType": "Windows",
     "runCommand": {
-        "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File comm.ps1"
+        "commandToExecute": "[concat('cmd /s',parameters('vscomm.ps1'))]" 
     }
 }
