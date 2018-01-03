@@ -37,7 +37,7 @@ if((Test-Path "$setupFolder\tfpt.msi") -eq $false)
         Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/tfpt.msi" "$setupFolder\tfpt.msi"  
 }
 
-if((Test-Path "$setupFolder\tfptinstaller.bat") -eq $false)
+if((Test-Path "$setupFolder\tfptinstall.bat") -eq $false)
 {
   
         Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/tfptinstall.bat" "$setupFolder\tfptinstall.bat"  
@@ -45,7 +45,7 @@ if((Test-Path "$setupFolder\tfptinstaller.bat") -eq $false)
 
 
 
-Start-Process -FilePath "$setupFolder\tfptinstaller.bat"
+Start-Process -FilePath "$setupFolder\tfptinstall.bat"
 
 
 #$env:Path += ";C:\mysql-5.7.20-winx64\bin"
