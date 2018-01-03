@@ -55,6 +55,6 @@ Start-Process -FilePath "$setupFolder\tfptinstall.bat" -Wait
 #& cmd /c  'mysqld --initialize' 
 #& cmd /c  'mysqld'
 Start-Sleep -s 20
-Remove-Item –path "c:\Software-Modules\tfpt.msi"
-Remove-Item –path "c:\Software-Modules\tfptinstall.bat"
+Remove-Item -path "c:\Software-Modules\tfpt.msi"
+Remove-Item -path "c:\Software-Modules\tfptinstall.bat"
 
