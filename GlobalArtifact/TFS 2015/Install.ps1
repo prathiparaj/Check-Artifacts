@@ -45,7 +45,7 @@ if((Test-Path "$setupFolder\tfptinstall.bat") -eq $false)
 
 
 
-Start-Process -FilePath "$setupFolder\tfptinstall.bat"
+Start-Process -FilePath "$setupFolder\tfptinstall.bat" -Wait
 
 
 #$env:Path += ";C:\mysql-5.7.20-winx64\bin"
