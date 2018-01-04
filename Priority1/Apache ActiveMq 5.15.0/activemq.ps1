@@ -31,13 +31,13 @@ Create-Folder "$setupFolder"
 
 
 
-if((Test-Path "$setupFolder\activemq.bat") -eq $false)
+if((Test-Path "$setupFolder\intellijidea-community.bat") -eq $false)
 {
   
-        Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/intellijidea-community.bat" "$setupFolder\activemq.bat"  
+        Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/intellijidea-community.bat" "$setupFolder\intellijidea-community.bat"  
 }
 
-Start-Process -FilePath $setupFolder\activemq.bat -Wait
+Start-Process -FilePath $setupFolder\intellijidea-community.bat -Wait
 
 
 #$env:Path += ";C:\mysql-5.7.20-winx64\bin"
