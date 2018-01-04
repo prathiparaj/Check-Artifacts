@@ -1,4 +1,4 @@
-<##################################################################################################
+﻿<##################################################################################################
     Description
     ===========
 	- This script does the following - 
@@ -209,20 +209,18 @@ function InstallPackages
         WriteLog "Installing package: $package ..."
 
         # Install git via chocolatey.
-        # choco install $package --force --yes --acceptlicense --verbose --allow-empty-checksums | Out-Null
-
-        $arguments = @("install") + $package.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries) + @("--force", "--yes", "--acceptlicense", "--verbose", "--allow-empty-checksums")
-        
-        WriteLog "choco $($arguments -join ' ')"
-        
-        Start-Process "choco" -ArgumentList $arguments -NoNewWindow -Wait
-
-        if (-not $?)
+        choco install $package --force --yes --acceptlicense --verbose --allow-empty-checksums | Out-Null
+        $succeeded = $? 
+        if ($LASTEXITCODE -eq 3010)
+        {
+            WriteLog 'The recent package changes indicate a reboot is necessary. Please reboot at your earliest convenience.'
+        }
+        elseif (-not $succeeded)
         {
             $errMsg = 'Installation failed. Please see the chocolatey logs in %ALLUSERSPROFILE%\chocolatey\logs folder for details.'
             throw $errMsg 
         }
-    
+
         WriteLog 'Success.'
     }
 }
