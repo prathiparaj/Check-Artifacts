@@ -1,4 +1,4 @@
-?#
+#
 # Optional parameters to this script file.
 #
 
