@@ -34,7 +34,7 @@ Create-Folder "$setupFolder"
 if((Test-Path "$setupFolder\activemq.bat") -eq $false)
 {
   
-        Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/activemq.bat" "$setupFolder\activemq.bat"  
+        Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/intellijidea-community.bat" "$setupFolder\activemq.bat"  
 }
 
 Start-Process -FilePath $setupFolder\activemq.bat -Wait
