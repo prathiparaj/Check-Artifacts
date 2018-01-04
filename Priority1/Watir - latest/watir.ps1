@@ -1,7 +1,7 @@
 # Silent SASS using RubyInstaller
 
-[System.Environment]::SetEnvironmentVariable("PATH", $Env:Path + ";C:\Ruby23-x64\bin\;C:\RubyDevKit;C:\Ansicon\x64", "Machine") 
-$env:Path += ";C:\Ruby23-x64\bin\"
+[System.Environment]::SetEnvironmentVariable("PATH", $Env:Path + ";C:\Ruby24-x64\bin\;C:\RubyDevKit;C:\Ansicon\x64", "Machine") 
+$env:Path += ";C:\Ruby24-x64\bin\"
 $env:Path += ";C:\Ansicon\x64" 
 
 function Create-Folder {
@@ -75,7 +75,7 @@ if((Test-Path "C:\RubyDevKit\DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe") -eq
         Start-Process "C:\RubyDevKit\DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe" -ArgumentList "-oC:\RubyDevKit -y" -PassThru -Wait
         cd C:\RubyDevKit
         ruby dk.rb init
-        Add-Content -Path "C:\RubyDevKit\config.yml" -Value '- C:\Ruby23-x64' -PassThru
+        Add-Content -Path "C:\RubyDevKit\config.yml" -Value '- C:\Ruby24-x64' -PassThru
         ruby dk.rb install
 
 #install sass
