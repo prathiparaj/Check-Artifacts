@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     # Space-, comma- or semicolon-separated list of Chocolatey packages.
-    [string] $Packages="intellijidea-community",
+    [string] $Packages,
 
     # Minimum PowerShell version required to execute this script.
     [int] $PSVersionRequired = 3
@@ -82,11 +82,11 @@ function Install-Packages
 {
     [CmdletBinding()]
     param(
-        $Packages="intellijidea-community"
+        $Packages
     )
 
     $Packages = $Packages.split(',; ', [StringSplitOptions]::RemoveEmptyEntries) -join ' '
-    $expression = "choco install intellijidea-community -y -f --acceptlicense --allow-empty-checksums --no-progress --stoponfirstfailure $Packages"
+    $expression = "choco install  -y -f --acceptlicense --allow-empty-checksums --no-progress --stoponfirstfailure $Packages"
     Invoke-ExpressionImpl -Expression $expression 
 }
 
