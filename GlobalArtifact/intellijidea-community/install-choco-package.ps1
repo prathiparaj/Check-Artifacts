@@ -1,7 +1,7 @@
 ﻿[CmdletBinding()]
 param(
     # Space-, comma- or semicolon-separated list of Chocolatey packages.
-    [string] $Packages="visualstudio2015professional",
+    [string] $Packages="sql-server-management-studio",
 
     # Minimum PowerShell version required to execute this script.
     [int] $PSVersionRequired = 3
