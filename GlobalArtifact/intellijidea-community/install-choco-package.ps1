@@ -1,3 +1,4 @@
+[CmdletBinding()]
 param(
     # Space-, comma- or semicolon-separated list of Chocolatey packages.
     [string] $Packages="mysql.workbench",
