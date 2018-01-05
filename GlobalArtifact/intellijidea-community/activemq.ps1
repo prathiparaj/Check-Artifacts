@@ -23,24 +23,25 @@ function WaitForFile($File) {
 
 #Setup Folders
 
-$setupFolder = "c:\Software-Modules"
-Create-Folder "$setupFolder"
+#$setupFolder = "c:\Software-Modules"
+#Create-Folder "$setupFolder"
 
 #Create-Folder "c:\Spring-Framework"
 
 
 
 
-if((Test-Path "$setupFolder\intellijidea-community.bat") -eq $false)
-{
+#if((Test-Path "$setupFolder\intellijidea-community.bat") -eq $false)
+#{
   
-        Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/intellijidea-community.bat" "$setupFolder\intellijidea-community.bat"  
-}
+        #Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/intellijidea-community.bat" "$setupFolder\intellijidea-community.bat"  
+#}
 
-Start-Process -FilePath $setupFolder\intellijidea-community.bat -Wait
+#Start-Process -FilePath $setupFolder\intellijidea-community.bat -Wait
 
 
-#$env:Path += ";C:\mysql-5.7.20-winx64\bin"
+$env:Path += ";C:\ProgramData\chocolatey"
+choco install intellijidea-community -y
 
 #mysqld --initialize
 #mysqld
