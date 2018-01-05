@@ -78,12 +78,12 @@ if((Test-Path "C:\RubyDevKit\DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe") -eq
         Add-Content -Path "C:\RubyDevKit\config.yml" -Value '- C:\Ruby24-x64' -PassThru
         ruby dk.rb install
 
+
+
+}
 #install sass
 gem install watir
 #cucumber --version
-
-}
-
 
 # Remove the installer
 #rm -Force $workdir\rubyinstaller-2.3.3-x64.exe
