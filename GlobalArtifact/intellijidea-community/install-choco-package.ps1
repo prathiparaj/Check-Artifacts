@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     # Space-, comma- or semicolon-separated list of Chocolatey packages.
-    [string] $Packages="mysql.workbench",
+    [string] $Packages="activemq --version 5.10.0",
 
     # Minimum PowerShell version required to execute this script.
     [int] $PSVersionRequired = 3
