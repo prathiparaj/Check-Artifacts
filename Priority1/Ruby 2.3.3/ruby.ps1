@@ -1,101 +1,164 @@
-﻿Param(
-    [ValidateNotNullOrEmpty()]
-    [string]
-    $RawPackagesList="ruby"
+﻿[CmdletBinding()]
+param(
+    # Space-, comma- or semicolon-separated list of Chocolatey packages.
+    [string] $Packages="ruby",
+
+    # Minimum PowerShell version required to execute this script.
+    [int] $PSVersionRequired = 3
 )
-  
-$ErrorActionPreference = "Stop"
- 
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force 
-$ChocolateyPackageInstallerFolder = Join-Path $env:ALLUSERSPROFILE -ChildPath $("ChocolateyPackageInstaller-" + [System.DateTime]::Now.ToString("yyyy-MM-dd-HH-mm-ss"))
-$ScriptLog = Join-Path -Path $ChocolateyPackageInstallerFolder -ChildPath "ChocolateyPackageInstaller.log"
-$ChocolateyInstallLog = Join-Path -Path $ChocolateyPackageInstallerFolder -ChildPath "ChocolateyInstall.log"
-function DisplayArgValues
+
+###################################################################################################
+#
+# PowerShell configurations
+#
+
+# NOTE: Because the $ErrorActionPreference is "Stop", this script will stop on first failure.
+#       This is necessary to ensure we capture errors inside the try-catch-finally block.
+$ErrorActionPreference = 'Stop'
+
+# Suppress progress bar output.
+$ProgressPreference = 'SilentlyContinue'
+
+###################################################################################################
+#
+# Handle all errors in this script.
+#
+
+trap
 {
-    WriteLog '========== Configuration =========='
-    WriteLog "RawPackagesList : $RawPackagesList"
-    WriteLog '========== Configuration =========='
-}
-function InitializeFolders
-{
-    if ($false -eq (Test-Path -Path $ChocolateyPackageInstallerFolder))
+    # NOTE: This trap will handle all errors. There should be no need to use a catch below in this
+    #       script, unless you want to ignore a specific error.
+    $message = $Error[0].Exception.Message
+    if ($message)
     {
-        New-Item -Path $ChocolateyPackageInstallerFolder -ItemType directory | Out-Null
+        Write-Host -Object "`nERROR: $message" -ForegroundColor Red
+    }
+
+    Write-Host "`nThe artifact failed to apply.`n"
+
+    # IMPORTANT NOTE: Throwing a terminating error (using $ErrorActionPreference = "Stop") still
+    # returns exit code zero from the PowerShell script when using -File. The workaround is to
+    # NOT use -File when calling this script and leverage the try-catch-finally block and return
+    # a non-zero exit code from the catch block.
+    exit -1
+}
+
+###################################################################################################
+#
+# Functions used in this script.
+#
+
+function Ensure-Chocolatey
+{
+    [CmdletBinding()]
+    param(
+    )
+
+    if ($Env:ChocolateyInstall)
+    {
+        Invoke-ExpressionImpl -Expression 'choco upgrade chocolatey'
+    }
+    else
+    {
+        Invoke-ExpressionImpl -Expression ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')) | Out-Null
+        $Env:Path += '%ALLUSERSPROFILE%\chocolatey\bin'
     }
 }
 
-function WriteLog
+function Ensure-PowerShell
 {
-    Param(
-        
-        [string]$Message,
-        [switch]$LogFileOnly
+    [CmdletBinding()]
+    param(
+        [int] $Version
     )
-    $timestampedMessage = "[$([System.DateTime]::Now)] $Message" | % {
-        if (-not $LogFileOnly)
-        {
-            Write-Host -Object $_
-        }
-        Out-File -InputObject $_ -FilePath $ScriptLog -Append
+
+    if ($PSVersionTable.PSVersion.Major -lt $Version)
+    {
+        throw "The current version of PowerShell is $($PSVersionTable.PSVersion.Major). Prior to running this artifact, ensure you have PowerShell $Version or higher installed."
     }
-}
-function InstallChocolatey
-{
-    Param(
-        [ValidateNotNullOrEmpty()] $chocolateyInstallLog
-    )
-    WriteLog 'Installing Chocolatey ...'
-    Invoke-Expression ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')) | Out-Null
-    WriteLog 'Success.'
 }
 
-function InstallPackages
+function Install-Packages
 {
-    Param(
-        [ValidateNotNullOrEmpty()][string] $packagesList
+    [CmdletBinding()]
+    param(
+        $Packages
     )
-    $separator = @(";",",")
-    $splitOption = [System.StringSplitOptions]::RemoveEmptyEntries
-    $packages = $packagesList.Trim().Split($separator, $splitOption)
-    if (0 -eq $packages.Count)
+
+    $Packages = $Packages.split(',; ', [StringSplitOptions]::RemoveEmptyEntries) -join ' '
+    $expression = "choco install  -- version 2.3.3 -y -f --acceptlicense --allow-empty-checksums --no-progress --stoponfirstfailure $Packages"
+    Invoke-ExpressionImpl -Expression $expression 
+}
+
+function Invoke-ExpressionImpl
+{
+    [CmdletBinding()]
+    param(
+        $Expression
+    )
+
+    # This call will normally not throw. So, when setting -ErrorVariable it causes it to throw.
+    # The variable $expError contains whatever is sent to stderr.
+   iex $Expression -ErrorVariable expError
+
+    # This check allows us to capture cases where the command we execute exits with an error code.
+    # In that case, we do want to throw an exception with whatever is in stderr. Normally, when
+    # Invoke-Expression throws, the error will come the normal way (i.e. $Error) and pass via the
+    # catch below.
+    if ($LastExitCode -or $expError)
     {
-        WriteLog 'No packages were specified. Exiting.'
-        return        
-    }
-    foreach ($package in $packages)
-    {
-        $package = $package.Trim()
-        WriteLog "Installing package: $package ..."
-        choco install $package --version 2.3.3 --force --yes --acceptlicense --verbose --allow-empty-checksums | Out-Null  
-        if (-not $?)
+        if ($LastExitCode -eq 3010)
         {
-            $errMsg = 'Installation failed. Please see the chocolatey logs in %ALLUSERSPROFILE%\chocolatey\logs folder for details.'
-            throw $errMsg 
+            # Expected condition. The recent changes indicate a reboot is necessary. Please reboot at your earliest convenience.
         }
-    
-        WriteLog 'Success.'
+        elseif ($expError[0])
+        {
+            throw $expError[0]
+        }
+        else
+        {
+            throw 'Installation failed. Please see the Chocolatey logs in %ALLUSERSPROFILE%\chocolatey\logs folder for details.'
+        }
     }
 }
+
+function Validate-Params
+{
+    [CmdletBinding()]
+    param(
+    )
+
+    if ([string]::IsNullOrEmpty($Packages))
+    {
+        throw 'Packages parameter is required.'
+    }
+}
+
+###################################################################################################
+#
+# Main execution block.
+#
 
 try
 {
-    #
-    InitializeFolders
-    #
-    DisplayArgValues
-    
-    # install the chocolatey package manager
-    InstallChocolatey -chocolateyInstallLog $ChocolateyInstallLog
-    # install the specified packages
-    InstallPackages -packagesList $RawPackagesList
+    pushd $PSScriptRoot
+
+    Write-Host 'Validating parameters.'
+    Validate-Params
+
+    Write-Host 'Configuring PowerShell session.'
+    Ensure-PowerShell -Version $PSVersionRequired
+    Enable-PSRemoting -Force -SkipNetworkProfileCheck | Out-Null
+
+    Write-Host 'Ensuring latest Chocolatey version is installed.'
+    Ensure-Chocolatey
+
+    Write-Host "Preparing to install Chocolatey packages: $Packages."
+    Install-Packages -Packages $Packages
+
+    Write-Host "`nThe artifact was applied successfully.`n"
 }
-catch
+finally
 {
-    $errMsg = $Error[0].Exception.Message
-    if ($errMsg)
-    {
-        WriteLog -Message "ERROR: $errMsg" -LogFileOnly
-    }
-    throw
+    popd
 }
- 
