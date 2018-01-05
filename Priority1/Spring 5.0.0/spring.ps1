@@ -54,7 +54,7 @@ Add-Type -assembly "system.io.compression.filesystem"
 
 [io.compression.zipfile]::ExtractToDirectory($BackUpPath, $destination)
 
-Remove-Item –path "C:\Software-Modules\spring-framework-5.0.1.RELEASE-dist.zip" -Recurse
+#Remove-Item –path "C:\Software-Modules\spring-framework-5.0.1.RELEASE-dist.zip" -Recurse
 
 #Start-Process -FilePath C:\haxmextracted\silent_install.bat -WorkingDirectory C:\haxmextracted\ 
 
@@ -74,6 +74,6 @@ Add-Type -assembly "system.io.compression.filesystem"
 
 [io.compression.zipfile]::ExtractToDirectory($BackUpPath, $destination)
 
-Remove-Item –path C:\spring_frameworks -Recurse
+#Remove-Item –path C:\spring_frameworks -Recurse
 
 #Start-Process -FilePath C:\haxmextracted\silent_install.bat -WorkingDirectory C:\haxmextracted\
