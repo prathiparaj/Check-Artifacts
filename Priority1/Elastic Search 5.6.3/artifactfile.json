@@ -1,14 +1,15 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-    "title": "elastic search",
-	"publisher": "G7CR Technologies India Pvt.Ltd",
-    "description": "install elastic search",
+    "title": "Elastic Search 5.6.3",
+    "publisher": "G7CR Technologies India Pvt.Ltd",
+    "description": "Elastic Search 5.6.3",
     "tags": [
-        "elastic search"
+        "Windows",
+        "Chocolatey"
     ],
-    "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
+    "iconUri": "https://github.com/chocolatey/chocolatey/raw/master/docs/logo/chocolateyicon.gif",
     "targetOsType": "Windows",
     "runCommand": {
-        "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File elastic.ps1"
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./install-choco-package.ps1')]"
     }
 }
