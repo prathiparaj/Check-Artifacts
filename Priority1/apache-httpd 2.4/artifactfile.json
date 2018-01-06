@@ -1,8 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-    "title": "Tomcat 8.5.12",
+    "title": "Apache httpd 2.4",
     "publisher": "G7CR Technologies India Pvt.Ltd",
-    "description": "Tomcat 8.5.12",
+    "description": "Apache httpd 2.4",
     "tags": [
         "Windows",
         "Chocolatey"
