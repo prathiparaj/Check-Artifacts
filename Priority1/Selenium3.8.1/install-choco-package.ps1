@@ -1,7 +1,7 @@
 ﻿[CmdletBinding()]
 param(
     # Space-, comma- or semicolon-separated list of Chocolatey packages.
-    [string] $Packages="ruby",
+    [string] $Packages="selenium",
 
     # Minimum PowerShell version required to execute this script.
     [int] $PSVersionRequired = 3
@@ -86,7 +86,7 @@ function Install-Packages
     )
 
     $Packages = $Packages.split(',; ', [StringSplitOptions]::RemoveEmptyEntries) -join ' '
-    $expression = "choco install  -- version 2.3.3 -y -f --acceptlicense --allow-empty-checksums --no-progress --stoponfirstfailure $Packages"
+    $expression = "choco install  -y -f --acceptlicense --allow-empty-checksums --no-progress --stoponfirstfailure $Packages"
     Invoke-ExpressionImpl -Expression $expression 
 }
 
