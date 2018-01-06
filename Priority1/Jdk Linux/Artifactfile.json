@@ -1,8 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-    "title": "JDK",
+    "title": "JDK Linux",
 	"publisher": "G7CR Technologies India Pvt Ltd",
-    "description": "Install Java Development Kit on Debian-based and Red Hat based distributions.",
+    "description": "Java Linux",
     "tags": [
       "JDK",
       "Linux",
