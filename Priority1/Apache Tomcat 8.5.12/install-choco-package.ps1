@@ -1,7 +1,7 @@
 ﻿[CmdletBinding()]
 param(
     # Space-, comma- or semicolon-separated list of Chocolatey packages.
-    [string] $Packages="activemq",
+    [string] $Packages="tomcat",
 
     # Minimum PowerShell version required to execute this script.
     [int] $PSVersionRequired = 3
