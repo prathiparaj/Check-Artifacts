@@ -1,6 +1,7 @@
 { 
   "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-1128/dtlArtifacts.json", 
   "title": "Internet Explorer", 
+  "publisher": "G7CR Technologies India Pvt.Ltd",
   "description": "Installs Internet Explorer", 
   "tags": [ 
     "Windows", 
@@ -9,6 +10,6 @@
 	 "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
   "targetOsType": "Windows", 
   "runCommand": { 
-    "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File ie11.ps1" 
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./ie11.ps1')]"
   } 
 } 

@@ -57,4 +57,3 @@ Start-Process -FilePath "$setupFolder\tfptinstall.bat" -Wait
 Start-Sleep -s 20
 Remove-Item -path "c:\Software-Modules\tfpt.msi"
 Remove-Item -path "c:\Software-Modules\tfptinstall.bat"
-

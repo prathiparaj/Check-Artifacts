@@ -8,7 +8,7 @@
         "Express",
         "2016"
             ],
-    "iconUri": "https://mylibrary123.blob.core.windows.net/reposit/G7.png",
+"iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
     "targetOsType": "Windows",
     "runCommand": {
         "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File install.ps1"

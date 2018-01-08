@@ -1,6 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
     "title": "Andriod",
+	"publisher": "G7CR Technologies India Pvt.Ltd",
     "description": "Android",
     "tags": [
         "7",
@@ -9,6 +10,6 @@
     "iconUri": "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/G7.png",
     "targetOsType": "Windows",
     "runCommand": {
-        "commandToExecute": "powershell.exe -ExecutionPolicy bypass -File android.ps1"
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./android.ps1')]"
     }
 }

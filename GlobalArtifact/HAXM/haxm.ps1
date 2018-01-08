@@ -35,7 +35,7 @@ Create-Folder "$setupFolder"
 if((Test-Path "$setupFolder\haxm-windows_v6_2_1.zip") -eq $false)
 {
   
-        Download-File "https://g7crtipl-my.sharepoint.com/personal/proloy_saha_g7cr_in/_layouts/15/guestaccess.aspx?docid=18f32b8ec2e7a42e1a06f09cda05811b5&authkey=Aea2y6k2y-zRIsd4m9zliVI" "$setupFolder\haxm-windows_v6_2_1.zip"  
+        Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/haxm-windows_v6_2_1.zip" "$setupFolder\haxm-windows_v6_2_1.zip"  
 }
 
 
