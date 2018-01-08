@@ -1,7 +1,7 @@
 ﻿[CmdletBinding()]
 param(
     # Space-, comma- or semicolon-separated list of Chocolatey packages.
-    [string] $Packages="soapui --version 5.2.1",
+    [string] $Packages="soapui --version 5.2.1.20160819",
 
     # Minimum PowerShell version required to execute this script.
     [int] $PSVersionRequired = 3
