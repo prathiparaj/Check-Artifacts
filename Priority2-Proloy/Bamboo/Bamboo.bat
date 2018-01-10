@@ -1,0 +1,1 @@
+C:\Software-Modules\atlassian-bamboo-6.3.0-windows-x64.exe -q
