@@ -55,7 +55,7 @@ Start-Process -FilePath "C:\Program Files\Bamboo\StartBamboo.bat"
 Start-Sleep -s 10
 
 # Start Bamboo Console
-Start-Process -FilePath "C:\Program Files\Bamboo\BambooConsole.bat"
+#Start-Process -FilePath "C:\Program Files\Bamboo\BambooConsole.bat"
 
 
 
