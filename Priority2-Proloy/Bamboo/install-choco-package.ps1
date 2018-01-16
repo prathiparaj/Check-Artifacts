@@ -46,20 +46,20 @@ Start-Sleep -s 50
 
 # Start Bamboo Service
 Start-Process -FilePath "C:\Program Files\Bamboo\bin\start-bamboo.bat"
-#Start-Sleep -s 10
+Start-Sleep -s 10
 
-Start-Process -FilePath "C:\Program Files\Bamboo\bin\start-bamboo.bat"
+#Start-Process -FilePath "C:\Program Files\Bamboo\bin\start-bamboo.bat"
 #Start-Sleep -s 10
 
 # Install Bamboo as Service
-#Start-Process -FilePath "C:\Program Files\Bamboo\InstallAsService.bat" 
-#Start-Sleep -s 10
+Start-Process -FilePath "C:\Program Files\Bamboo\InstallAsService.bat" 
+Start-Sleep -s 10
 
 
 
 # Start Bamboo Service
-#Start-Process -FilePath "C:\Program Files\Bamboo\StartBamboo.bat"
-#Start-Sleep -s 10
+Start-Process -FilePath "C:\Program Files\Bamboo\StartBamboo.bat"
+Start-Sleep -s 10
 
 # Start Bamboo Console
 #Start-Process -FilePath "C:\Program Files\Bamboo\BambooConsole.bat"
