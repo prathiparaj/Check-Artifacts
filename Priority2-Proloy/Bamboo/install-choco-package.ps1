@@ -53,6 +53,11 @@ if((Test-Path "$setupFolder\StartBamboo.bat") -eq $false)
         Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/StartBamboo.bat" "$setupFolder\StartBamboo.bat"  
 }
 
+if((Test-Path "$setupFolder\UninstallService.bat") -eq $false)
+{
+  
+        Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/UninstallService.bat" "$setupFolder\UninstallService.bat"  
+}
 
 
 
@@ -60,6 +65,8 @@ if((Test-Path "$setupFolder\StartBamboo.bat") -eq $false)
 # Install Bamboo
 Start-Process -FilePath "$setupFolder\Bamboo.bat" 
 Start-Sleep -s 50
+
+Start-Process -FilePath "$setupFolder\UninstallService.bat"
 
 
 # Install Bamboo as Service
