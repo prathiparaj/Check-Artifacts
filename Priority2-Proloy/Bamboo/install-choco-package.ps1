@@ -56,8 +56,8 @@ Start-Process -FilePath "C:\Program Files\Bamboo\StartBamboo.bat"
 
 
 #Remove exe
-Remove-Item –Path "$setupFolder\atlassian-bamboo-6.3.0-windows-x64.exe"
+#Remove-Item –Path "$setupFolder\atlassian-bamboo-6.3.0-windows-x64.exe"
 
 #Remove exe
-Remove-Item –Path "$setupFolder\Bamboo.bat"  
+#Remove-Item –Path "$setupFolder\Bamboo.bat"  
 
