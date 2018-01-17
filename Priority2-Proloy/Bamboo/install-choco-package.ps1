@@ -42,12 +42,12 @@ if((Test-Path "$setupFolder\Bamboo.bat") -eq $false)
 }
 # Install Bamboo
 Start-Process -FilePath "$setupFolder\Bamboo.bat" 
-Start-Sleep -s 50
+Start-Sleep -s 200
 
 
 # Install Bamboo as Service
 Start-Process -FilePath "C:\Program Files\Bamboo\InstallAsService.bat" 
-Start-Sleep -s 10
+Start-Sleep -s 200
 
 
 # Start Bamboo Service
