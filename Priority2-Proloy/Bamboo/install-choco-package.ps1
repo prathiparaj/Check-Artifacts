@@ -44,10 +44,13 @@ if((Test-Path "$setupFolder\Bamboo.bat") -eq $false)
 Start-Process -FilePath "$setupFolder\Bamboo.bat"
 Start-Sleep -s 200
 
+Invoke-Command {Invoke-Expression -Command:"cmd.exe /c 'C:\Program Files\Bamboo\InstallAsService.bat'"}
+Invoke-Command {Invoke-Expression -Command:"cmd.exe /c 'C:\Program Files\Bamboo\StartBamboo.bat'"}
+
 
 # Install Bamboo as Service
-Start-Process -FilePath "C:\Program Files\Bamboo\InstallAsService.bat"
-Start-Sleep -s 200
+#Start-Process -FilePath "C:\Program Files\Bamboo\InstallAsService.bat"
+#Start-Sleep -s 200
 
 
 # Start Bamboo Service
