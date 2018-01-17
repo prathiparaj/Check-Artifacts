@@ -68,6 +68,8 @@ Start-Sleep -s 50
 
 Start-Process -FilePath "$setupFolder\UninstallService.bat"
 
+Start-Sleep -s 10
+
 
 # Install Bamboo as Service
 
