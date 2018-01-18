@@ -45,7 +45,12 @@ Start-Process -FilePath "$setupFolder\Bamboo.bat"
 Start-Sleep -s 200
 Start-Process cmd -ArgumentList "/c InstallAsService.bat" -WorkingDirectory "C:\Program Files\Bamboo"
 Start-Sleep -s 20
+Start-Process cmd -ArgumentList "/c Start-Bamboo.bat" -WorkingDirectory "C:\Program Files\Bamboo"
+Start-Sleep -s 10
+
 Start-Process cmd -ArgumentList "/c start-bamboo.bat" -WorkingDirectory "C:\Program Files\Bamboo\bin"
+
+
 
 
 
@@ -58,9 +63,7 @@ Start-Process cmd -ArgumentList "/c start-bamboo.bat" -WorkingDirectory "C:\Prog
 
 
 
-#Remove exe
-#Remove-Item –Path "$setupFolder\atlassian-bamboo-6.3.0-windows-x64.exe"
+Remove-Item -Path "$setupFolder\atlassian-bamboo-6.3.0-windows-x64.exe"
 
-#Remove exe
-#Remove-Item –Path "$setupFolder\Bamboo.bat"  
+Remove-Item -Path "$setupFolder\Bamboo.bat"  
 
