@@ -1,4 +1,4 @@
-﻿function Create-Folder {
+function Create-Folder {
     Param ([string]$path)
     if ((Test-Path $path) -eq $false) 
     {
@@ -41,33 +41,29 @@ if((Test-Path "$setupFolder\Bamboo.bat") -eq $false)
         Download-File "https://globalartifactstg.blob.core.windows.net/globalsoftwarelink4artifact/Bamboo.bat" "$setupFolder\Bamboo.bat"  
 }
 # Install Bamboo
-Start-Process -FilePath "$setupFolder\Bamboo.bat" 
-Start-Sleep -s 50
+Start-Process -FilePath "$setupFolder\Bamboo.bat"
+Start-Sleep -s 200
+Start-Process cmd -ArgumentList "/c InstallAsService.bat" -WorkingDirectory "C:\Program Files\Bamboo"
+Start-Sleep -s 40
+Start-Process cmd -ArgumentList "/c Start-Bamboo.bat" -WorkingDirectory "C:\Program Files\Bamboo"
+Start-Sleep -s 10
+
+#Start-Process cmd -ArgumentList "/c start-bamboo.bat" -WorkingDirectory "C:\Program Files\Bamboo\bin"
+
+
+
+
+
+
+
+
 
 # Start Bamboo Service
-Start-Process -FilePath "C:\Program Files\Bamboo\bin\start-bamboo.bat"
-Start-Sleep -s 10
-
-#Start-Process -FilePath "C:\Program Files\Bamboo\bin\start-bamboo.bat"
-#Start-Sleep -s 10
-
-# Install Bamboo as Service
-Start-Process -FilePath "C:\Program Files\Bamboo\InstallAsService.bat" 
-Start-Sleep -s 10
+#Start-Process -FilePath "C:\Program Files\Bamboo\StartBamboo.bat"
 
 
 
-# Start Bamboo Service
-Start-Process -FilePath "C:\Program Files\Bamboo\StartBamboo.bat"
-Start-Sleep -s 10
+Remove-Item -Path "$setupFolder\atlassian-bamboo-6.3.0-windows-x64.exe"
 
-# Start Bamboo Console
-#Start-Process -FilePath "C:\Program Files\Bamboo\BambooConsole.bat"
-#Start-Sleep -s 10
+Remove-Item -Path "$setupFolder\Bamboo.bat"  
 
-
- #Remove exe
-Remove-Item –Path "$setupFolder\atlassian-bamboo-6.3.0-windows-x64.exe"
-
-#Remove exe
-Remove-Item –Path "$setupFolder\Bamboo.bat" 
